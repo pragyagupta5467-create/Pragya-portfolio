@@ -10,7 +10,7 @@ import pythonTrainingImg from '../assets/Certificates/photo_2026-08-17_01-10-25.
 import smartParkingImg from '../assets/Certificates/photo_2026-08-17_01-10-28.jpg';
 import onlineEnquiryImg from '../assets/Certificates/photo_2026-08-17_01-10-32.jpg';
 
-export const CertificationsData = [
+export const certificationsData = [
   // 2026 Certificates
   {
     id: "women-who-master-hackathon",
