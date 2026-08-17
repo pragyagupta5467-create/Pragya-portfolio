@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+:root {
+  --gb-bg: #17152A;
+  --gb-border: #4B3A91;
+  --gb-text: #F5F3FF;
+  --gb-accent: #A78BFA;
+  --gb-sparkle: #A78BFA;
+  --gb-avatar-bg: #8B5CF6;
+  --gb-avatar-text: #FFFFFF;
+  --gb-status-dot: #34D399;
+}
+
+.light {
+  --gb-bg: #F8F9FF;
+  --gb-border: #D8D4FF;
+  --gb-text: #17152A;
+  --gb-accent: #6D3FE8;
+  --gb-sparkle: #6D3FE8;
+  --gb-avatar-bg: #7C3AED;
+  --gb-avatar-text: #FFFFFF;
+  --gb-status-dot: #10B981;
+}
+
+.greeting-bar {
+  background-color: var(--gb-bg) !important;
+  border-color: var(--gb-border) !important;
+  color: var(--gb-text) !important;
+}
+
+.greeting-bar-text {
+  color: var(--gb-text) !important;
+}
+
+.greeting-bar-accent {
+  color: var(--gb-accent) !important;
+}
+
+.greeting-bar-sparkle {
+  color: var(--gb-sparkle) !important;
+}
+
+.greeting-bar-avatar {
+  background-color: var(--gb-avatar-bg) !important;
+  color: var(--gb-avatar-text) !important;
+}
+
+.greeting-bar-status-dot {
+  background-color: var(--gb-status-dot) !important;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  body {
+    background-color: #020617;
+    color: #f8fafc;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body.light {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+}
+
+/* Shining Purple-Blue Gradient Text Animation for Heading */
+.shining-purple-blue-text {
+  background: linear-gradient(135deg, #a855f7 0%, #3b82f6 40%, #6366f1 70%, #d946ef 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineGradient 4s ease infinite;
+  filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.35));
+}
+
+@keyframes shineGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Infinite Marquee Track Animation for Certificates */
+@keyframes marqueeTrack {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeTrack 42s linear infinite;
+}
+
+.animate-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-track {
+    animation: none !important;
+    transform: none !important;
+    width: auto !important;
+  }
+}
+
+/* ========================================================================== */
+/* COMPREHENSIVE LIGHT MODE CONTRAST & THEME OVERRIDES                        */
+/* ========================================================================== */
+
+.light {
+  color-scheme: light;
+}
+
+.light nav {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light section {
+  border-color: #e2e8f0 !important;
+}
+
+/* Base Container & Background Overrides in Light Mode */
+.light .bg-slate-950,
+.light .bg-slate-950\/90,
+.light .bg-slate-950\/80,
+.light .bg-slate-950\/70,
+.light .bg-slate-950\/60,
+.light .bg-slate-950\/40 {
+  background-color: #f8fafc !important;
+}
+
+/* Card Backgrounds & Borders in Light Mode */
+.light .bg-slate-900,
+.light .bg-slate-900\/90,
+.light .bg-slate-900\/80,
+.light .bg-slate-900\/70,
+.light .bg-slate-900\/60,
+.light .bg-slate-900\/50 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Timeline Education Card Specific Gradient Overrides for Light Mode */
+.light .from-purple-950\/40 {
+  --tw-gradient-from: #f3e8ff !important;
+  --tw-gradient-to: #f3e8ff00 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.light .via-slate-900 {
+  --tw-gradient-to: #ffffff00 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), #ffffff, var(--tw-gradient-to) !important;
+}
+.light .to-slate-900 {
+  --tw-gradient-to: #f8fafc !important;
+}
+
+.light .bg-gradient-to-br.from-purple-950\/40 {
+  background-image: linear-gradient(to bottom right, #f3e8ff, #ffffff, #f8fafc) !important;
+  border-color: #d8b4fe !important;
+}
+
+/* Inner Utility Element & Sub-card Overrides for Light Mode */
+.light .bg-slate-800,
+.light .bg-slate-800\/80,
+.light .bg-slate-800\/60 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Form Inputs & Textareas in Light Mode */
+.light input,
+.light textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+.light input:focus,
+.light textarea:focus {
+  border-color: #9333ea !important;
+  box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2) !important;
+}
+
+/* Buttons in Light Mode */
+.light button.bg-slate-800,
+.light button.bg-slate-900,
+.light a.bg-slate-900,
+.light a.bg-slate-950 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light button.bg-slate-800:hover,
+.light button.bg-slate-900:hover,
+.light a.bg-slate-900:hover,
+.light a.bg-slate-950:hover {
+  background-color: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+}
+
+/* High Contrast Text Colors in Light Mode */
+.light .text-slate-100,
+.light .text-white {
+  color: #0f172a !important;
+}
+
+.light .text-slate-200,
+.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light .text-slate-400,
+.light .text-slate-500 {
+  color: #475569 !important;
+}
+
+.light .text-slate-600 {
+  color: #64748b !important;
+}
+
+/* Purple Accents in Light Mode */
+.light .text-purple-200,
+.light .text-purple-200\/90,
+.light .text-purple-200\/80 {
+  color: #6b21a8 !important;
+  font-weight: 600 !important;
+}
+.light .text-purple-300 {
+  color: #7e22ce !important;
+  font-weight: 600 !important;
+}
+.light .text-purple-400 {
+  color: #9333ea !important;
+}
+.light .bg-purple-500\/10,
+.light .bg-purple-500\/20 {
+  background-color: #f3e8ff !important;
+  border-color: #d8b4fe !important;
+}
+
+/* Emerald Accents in Light Mode */
+.light .text-emerald-300 {
+  color: #065f46 !important;
+  font-weight: 600 !important;
+}
+.light .text-emerald-400 {
+  color: #047857 !important;
+}
+.light .bg-emerald-500\/10,
+.light .bg-emerald-500\/20 {
+  background-color: #d1fae5 !important;
+  border-color: #6ee7b7 !important;
+}
+
+/* Blue Accents in Light Mode */
+.light .text-blue-300 {
+  color: #1e40af !important;
+  font-weight: 600 !important;
+}
+.light .text-blue-400 {
+  color: #1d4ed8 !important;
+}
+.light .bg-blue-500\/10,
+.light .bg-blue-500\/20 {
+  background-color: #dbeafe !important;
+  border-color: #93c5fd !important;
+}
+
+/* Timeline & Node Outlines in Light Mode */
+.light .bg-slate-950.border-purple-500,
+.light .bg-slate-950.border-emerald-500,
+.light .bg-slate-950.border-purple-400,
+.light .bg-slate-950.border-blue-400 {
+  background-color: #ffffff !important;
+}
+
+/* Marquee Track Side Fade Gradients in Light Mode */
+.light .from-slate-950 {
+  --tw-gradient-from: #f8fafc !important;
+  --tw-gradient-to: #f8fafc00 !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+/* Border Overrides in Light Mode */
+.light .border-slate-800,
+.light .border-slate-800\/80,
+.light .border-slate-900 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Custom scrollbars for Light Mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
