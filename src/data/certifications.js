@@ -3,14 +3,14 @@
  * Arranged strictly by date (Newest first: 2026 -> 2025 -> 2024 -> 2021)
  */
 
-import womenWhoMasterImg from '../assets/certificates/photo_2026-08-17_01-21-07.jpg';
-import sihImg from '../assets/certificates/photo_2026-08-17_01-10-17.jpg';
-import promptEngImg from '../assets/certificates/photo_2026-08-17_01-10-21.jpg';
-import pythonTrainingImg from '../assets/certificates/photo_2026-08-17_01-10-25.jpg';
-import smartParkingImg from '../assets/certificates/photo_2026-08-17_01-10-28.jpg';
-import onlineEnquiryImg from '../assets/certificates/photo_2026-08-17_01-10-32.jpg';
+import womenWhoMasterImg from '../assets/Certificates/photo_2026-08-17_01-21-07.jpg';
+import sihImg from '../assets/Certificates/photo_2026-08-17_01-10-17.jpg';
+import promptEngImg from '../assets/Certificates/photo_2026-08-17_01-10-21.jpg';
+import pythonTrainingImg from '../assets/Certificates/photo_2026-08-17_01-10-25.jpg';
+import smartParkingImg from '../assets/Certificates/photo_2026-08-17_01-10-28.jpg';
+import onlineEnquiryImg from '../assets/Certificates/photo_2026-08-17_01-10-32.jpg';
 
-export const certificationsData = [
+export const CertificationsData = [
   // 2026 Certificates
   {
     id: "women-who-master-hackathon",
