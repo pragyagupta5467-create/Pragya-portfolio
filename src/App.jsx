@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData } from './data/projectsData';
 import ProjectCard from './components/ProjectCard';
 import CertificationSection from './components/CertificationSection';
@@ -23,7 +24,9 @@ import {
   GraduationCap,
   Trophy,
   BadgeCheck,
-  Package
+  Package,
+  Menu,
+  X
 } from 'lucide-react';
 import './App.css';
 
@@ -65,6 +68,9 @@ function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('portfolio_theme') || 'dark';
   });
+
+  // Mobile menu drawer state
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('portfolio_theme', theme);
@@ -129,29 +135,30 @@ function App() {
       <AnimatedDotBackground theme={theme} />
 
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/80 px-6 py-4 transition-all">
+      <nav className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/80 px-4 sm:px-6 py-3.5 transition-all">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="#hero" className="flex items-center gap-2 group">
             <div className="p-2 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-600 text-white font-bold text-lg shadow-md shadow-purple-900/30 group-hover:scale-105 transition-transform">
               PG
             </div>
             <div>
-              <span className="font-bold text-lg tracking-tight text-white group-hover:text-purple-300 transition-colors">
+              <span className="font-bold text-base sm:text-lg tracking-tight text-white group-hover:text-purple-300 transition-colors">
                 Pragya Gupta
               </span>
-              <span className="block text-xs font-mono text-purple-400">MCA @ IIIT Bhopal</span>
+              <span className="block text-[11px] font-mono text-purple-400">MCA @ IIIT Bhopal</span>
             </div>
           </a>
 
+          {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
             <li>
               <a href="#hero" className="hover:text-purple-400 transition-colors">Home</a>
             </li>
             <li>
-              <a href="#education" className="hover:text-purple-400 transition-colors">Education</a>
+              <a href="#about" className="hover:text-purple-400 transition-colors">About Me</a>
             </li>
             <li>
-              <a href="#about" className="hover:text-purple-400 transition-colors">About Me</a>
+              <a href="#education" className="hover:text-purple-400 transition-colors">Education</a>
             </li>
             <li>
               <a href="#skills" className="hover:text-purple-400 transition-colors">Skills</a>
@@ -173,25 +180,70 @@ function App() {
             </li>
           </ul>
 
-          {/* Right Header Actions: Theme Toggle + Meet Pragya Avatar */}
-          <div className="flex items-center gap-3">
+          {/* Right Header Actions: Theme Toggle + Speech Avatar + Mobile Menu Toggle */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <ThemeToggle theme={theme} onToggle={toggleTheme} />
             <MeetPragyaAvatar />
+
+            {/* Mobile Hamburger Toggle Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              aria-label="Toggle Navigation Menu"
+              className="lg:hidden p-2 rounded-xl border border-slate-800 bg-slate-900 text-slate-200 hover:text-white transition cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5 text-purple-400" /> : <Menu className="w-5 h-5 text-purple-400" />}
+            </button>
           </div>
         </div>
+
+        {/* Animated Mobile / Tablet Navigation Drawer */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden overflow-hidden border-t border-slate-800/80 mt-3 pt-3"
+            >
+              <ul className="flex flex-col gap-1 text-sm font-medium text-slate-300">
+                {[
+                  { label: 'Home', href: '#hero' },
+                  { label: 'About Me', href: '#about' },
+                  { label: 'Education', href: '#education' },
+                  { label: 'Skills', href: '#skills' },
+                  { label: 'Core Subjects', href: '#core-subjects' },
+                  { label: 'Projects', href: '#projects' },
+                  { label: 'Certificates', href: '#certifications' },
+                  { label: 'Coding Profiles', href: '#coding-profiles' },
+                  { label: 'Contact', href: '#contact' }
+                ].map((item, idx) => (
+                  <li key={idx}>
+                    <a
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block py-2.5 px-4 rounded-xl hover:bg-purple-500/10 hover:text-purple-300 transition-colors min-h-[44px] flex items-center"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="relative pt-16 pb-12 px-6 border-b border-slate-900 bg-slate-950">
+      <section id="hero" className="relative pt-12 sm:pt-16 pb-12 px-4 sm:px-6 border-b border-slate-900 bg-slate-950">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           {/* Student Status Badges */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-mono">
-              <GraduationCap className="w-4 h-4 text-purple-400" />
+              <GraduationCap className="w-4 h-4 text-purple-400 shrink-0" />
               <span>MCA Student @ IIIT Bhopal (2024–Present)</span>
             </div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
-              <Trophy className="w-4 h-4 text-emerald-400" />
+              <Trophy className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>GeeksforGeeks Campus Mantri</span>
             </div>
           </div>
@@ -203,7 +255,7 @@ function App() {
 
           {/* Subtitle & Intro - smoothly displayed after typing completion */}
           <div className={`transition-opacity duration-700 ${showSubtitle ? 'opacity-100' : 'opacity-90'}`}>
-            <p className="text-base sm:text-lg md:text-xl font-medium text-purple-200/90 mb-5 max-w-2xl mx-auto font-mono">
+            <p className="text-sm sm:text-lg md:text-xl font-semibold text-purple-300 dark:text-purple-200 mb-5 max-w-2xl mx-auto font-mono leading-relaxed">
               MCA Student @ IIIT Bhopal | Software Development | AI/ML Enthusiast
             </p>
 
@@ -213,17 +265,17 @@ function App() {
             </p>
 
             {/* Hero CTAs */}
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
                 href="#projects"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs shadow-lg shadow-purple-900/30 transition hover:-translate-y-0.5"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs shadow-lg shadow-purple-900/30 transition hover:-translate-y-0.5 min-h-[44px]"
               >
                 <Code2 className="w-4 h-4" />
                 <span>View Projects</span>
               </a>
               <a
                 href="#contact"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-700 bg-slate-900/90 hover:bg-slate-800 text-slate-200 font-semibold text-xs transition hover:-translate-y-0.5"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-slate-700 bg-slate-900/90 hover:bg-slate-800 text-slate-200 font-semibold text-xs transition hover:-translate-y-0.5 min-h-[44px]"
               >
                 <Mail className="w-4 h-4 text-purple-400" />
                 <span>Contact Me</span>
@@ -233,7 +285,7 @@ function App() {
         </div>
       </section>
 
-      {/* SINGLE VERTICAL CONNECTED ZIG-ZAG TIMELINE (Education Left -> Campus Mantri Right -> About Me Left -> Student Focus Right) */}
+      {/* SINGLE VERTICAL CONNECTED ZIG-ZAG TIMELINE (About Me Left -> Education Right -> Campus Mantri Left -> Student Focus Right) */}
       <section className="border-t border-slate-900 bg-slate-950/60">
         <ConnectedProfileTree
           gfgOptionsData={gfgOptionsData}
@@ -243,13 +295,13 @@ function App() {
       </section>
 
       {/* Technical Skills Section */}
-      <section id="skills" className="py-16 px-6 border-t border-slate-900 bg-slate-950/40">
+      <section id="skills" className="py-16 px-4 sm:px-6 border-t border-slate-900 bg-slate-950/40">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400">
               <Cpu className="w-5 h-5" />
             </div>
-            <h2 className="text-3xl font-bold text-white">Technical Skills</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Technical Skills</h2>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-5">
@@ -314,10 +366,10 @@ function App() {
       <CoreSubjectsSection />
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 border-t border-slate-900 relative">
+      <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 border-t border-slate-900 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
               Featured Projects
             </h2>
             <p className="text-slate-400 text-sm">
@@ -325,7 +377,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {projectsData.map((project) => (
               <ProjectCard
                 key={project.id}
@@ -337,7 +389,7 @@ function App() {
         </div>
       </section>
 
-      {/* Certificates Section (Single Horizontal Row, Newest First) */}
+      {/* Certificates Section */}
       <CertificationSection
         onViewCertificate={handleViewCertificate}
         onExplainCertificate={handleExplainCertification}

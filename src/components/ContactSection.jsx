@@ -80,19 +80,19 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 px-6 border-t border-slate-900 bg-slate-950/80 relative">
+    <section id="contact" className="py-16 px-4 sm:px-6 border-t border-slate-900 bg-slate-950/80 relative">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-8">
           <div className="inline-flex p-3 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-400 mb-3 shadow-lg shadow-purple-500/5">
             <Mail className="w-6 h-6" />
           </div>
-          <h2 className="text-3xl font-bold text-white">Let's Connect</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Let's Connect</h2>
         </div>
 
         {/* Visually Centered Contact Form Card */}
         <div className="max-w-xl mx-auto">
-          <div className="p-6 md:p-8 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl relative backdrop-blur-md">
+          <div className="p-5 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl relative backdrop-blur-md">
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Name Input */}
               <div>
@@ -107,7 +107,7 @@ export function ContactSection() {
                   onChange={handleChange}
                   placeholder="Your Name"
                   disabled={status.submitting}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-purple-500/70 focus:ring-1 focus:ring-purple-500/50 disabled:opacity-50 transition"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-purple-500/70 focus:ring-1 focus:ring-purple-500/50 disabled:opacity-50 transition min-h-[44px]"
                   required
                 />
               </div>
@@ -125,7 +125,7 @@ export function ContactSection() {
                   onChange={handleChange}
                   placeholder="visitor@example.com"
                   disabled={status.submitting}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-purple-500/70 focus:ring-1 focus:ring-purple-500/50 disabled:opacity-50 transition"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm placeholder-slate-600 focus:outline-none focus:border-purple-500/70 focus:ring-1 focus:ring-purple-500/50 disabled:opacity-50 transition min-h-[44px]"
                   required
                 />
               </div>
@@ -138,7 +138,7 @@ export function ContactSection() {
                 </label>
                 <textarea
                   name="message"
-                  rows="5"
+                  rows="4"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Write your message here..."
@@ -167,7 +167,7 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={status.submitting}
-                className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer"
+                className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer min-h-[44px]"
               >
                 {status.submitting ? (
                   <>
@@ -184,13 +184,13 @@ export function ContactSection() {
             </form>
 
             {/* Professional Social Links (LinkedIn & GitHub) */}
-            <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-center gap-4">
+            <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               {/* LinkedIn Link */}
               <a
                 href="https://www.linkedin.com/in/pragya-gupta-44200922a"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 px-4 rounded-xl border border-slate-800 bg-slate-950 hover:border-blue-500/50 hover:bg-slate-900 transition-all group"
+                className="w-full sm:w-auto flex items-center justify-center gap-3 p-3 px-4 rounded-xl border border-slate-800 bg-slate-950 hover:border-blue-500/50 hover:bg-slate-900 transition-all group min-h-[44px]"
               >
                 <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 group-hover:scale-105 transition-transform">
                   <LinkedInIcon className="w-4.5 h-4.5" />
@@ -206,7 +206,7 @@ export function ContactSection() {
                 href="https://github.com/pragyagupta5467-create"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 px-4 rounded-xl border border-slate-800 bg-slate-950 hover:border-purple-500/50 hover:bg-slate-900 transition-all group"
+                className="w-full sm:w-auto flex items-center justify-center gap-3 p-3 px-4 rounded-xl border border-slate-800 bg-slate-950 hover:border-purple-500/50 hover:bg-slate-900 transition-all group min-h-[44px]"
               >
                 <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-400 group-hover:scale-105 transition-transform">
                   <GitHubIcon className="w-4.5 h-4.5" />

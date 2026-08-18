@@ -22,7 +22,7 @@ export default function ProjectCard({ project, onExplain }) {
   return (
     <motion.div
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-xl backdrop-blur-md transition-all hover:border-purple-500/40"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 shadow-xl backdrop-blur-md transition-all hover:border-purple-500/40"
     >
       <div>
         {/* Category & Subtitle Badges */}
@@ -38,7 +38,7 @@ export default function ProjectCard({ project, onExplain }) {
         </div>
 
         {/* Title & Tagline */}
-        <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
           {project.name}
         </h3>
         <p className="text-xs font-medium text-slate-400 mb-3">{project.tagline}</p>
@@ -47,7 +47,7 @@ export default function ProjectCard({ project, onExplain }) {
         {project.role && (
           <div className="mb-4 p-3 rounded-xl bg-purple-950/30 border border-purple-500/30 text-xs text-purple-200">
             <span className="font-semibold text-purple-300 block mb-1 flex items-center gap-1.5">
-              <UserCheck className="w-3.5 h-3.5 text-purple-400" />
+              <UserCheck className="w-3.5 h-3.5 text-purple-400 shrink-0" />
               My Role: {project.role}
             </span>
             {project.roleContributions && (
@@ -69,7 +69,7 @@ export default function ProjectCard({ project, onExplain }) {
         {project.goal && (
           <div className="mb-4 p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 text-xs text-slate-300">
             <span className="font-semibold text-purple-400 block mb-1 flex items-center gap-1.5">
-              <Target className="w-3.5 h-3.5 text-purple-400" />
+              <Target className="w-3.5 h-3.5 text-purple-400 shrink-0" />
               Goal of the Project:
             </span>
             <p className="leading-relaxed text-[11px] text-slate-300">{project.goal}</p>
@@ -83,7 +83,7 @@ export default function ProjectCard({ project, onExplain }) {
               <ImageIcon className="w-3.5 h-3.5" />
               Project Gallery (Click to view full photo)
             </span>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
               {project.gallery.map((item, idx) => (
                 <button
                   key={item.id || idx}
@@ -94,7 +94,7 @@ export default function ProjectCard({ project, onExplain }) {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-full w-full object-contain transition-transform duration-300 group-hover/img:scale-105"
+                      className="h-full w-full object-contain transition-transform duration-300 group-hover/item:scale-105"
                     />
                     <div className="absolute inset-0 bg-purple-950/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
                       <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-950/90 text-purple-300 border border-purple-500/40">
@@ -114,7 +114,7 @@ export default function ProjectCard({ project, onExplain }) {
         {/* Key Features Pill List */}
         <div className="mb-5">
           <span className="text-xs font-semibold text-slate-400 block mb-2">Key Highlights:</span>
-          <div className="grid grid-cols-2 gap-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
             {project.features.slice(0, 6).map((feature, idx) => (
               <div key={idx} className="flex items-center gap-1.5 text-xs text-slate-300">
                 <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -138,10 +138,10 @@ export default function ProjectCard({ project, onExplain }) {
       </div>
 
       {/* Card Footer Actions */}
-      <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
+      <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3">
         <button
           onClick={() => onExplain(project)}
-          className="relative flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs shadow-md transition-all cursor-pointer"
+          className="w-full sm:flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs shadow-md transition-all cursor-pointer min-h-[44px]"
         >
           <Bot className="w-4 h-4 text-purple-200" />
           <span>View Project</span>
@@ -153,7 +153,7 @@ export default function ProjectCard({ project, onExplain }) {
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-emerald-500/40 bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-300 font-semibold text-xs transition-all shadow-md"
+            className="w-full sm:flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-emerald-500/40 bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-300 font-semibold text-xs transition-all shadow-md min-h-[44px]"
           >
             <span>Live Demo</span>
             <ExternalLink className="w-3.5 h-3.5 text-emerald-400" />
@@ -166,14 +166,14 @@ export default function ProjectCard({ project, onExplain }) {
         {activeGalleryItem && (
           <div
             onClick={() => setGalleryIndex(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/90 backdrop-blur-md"
           >
             <motion.div
               onClick={(e) => e.stopPropagation()}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative max-w-4xl w-full max-h-[88vh] p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl flex flex-col justify-between"
+              className="relative max-w-4xl w-full max-h-[90vh] p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl flex flex-col justify-between overflow-hidden"
             >
               {/* Modal Header */}
               <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-2.5">
@@ -187,18 +187,18 @@ export default function ProjectCard({ project, onExplain }) {
                 </div>
                 <button
                   onClick={() => setGalleryIndex(null)}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition cursor-pointer"
+                  className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               {/* Viewport View (object-contain aspect ratio preserved) */}
-              <div className="relative flex-1 overflow-hidden flex items-center justify-center p-2 bg-slate-950 rounded-xl border border-slate-800 min-h-[300px]">
+              <div className="relative flex-1 overflow-hidden flex items-center justify-center p-2 bg-slate-950 rounded-xl border border-slate-800 min-h-[260px] sm:min-h-[300px]">
                 <img
                   src={activeGalleryItem.image}
                   alt={activeGalleryItem.title}
-                  className="max-h-[68vh] max-w-full w-auto h-auto object-contain mx-auto rounded-lg shadow-lg"
+                  className="max-h-[60vh] sm:max-h-[68vh] max-w-full w-auto h-auto object-contain mx-auto rounded-lg shadow-lg"
                 />
 
                 {/* Multi-image Prev / Next Controls */}
@@ -206,13 +206,13 @@ export default function ProjectCard({ project, onExplain }) {
                   <>
                     <button
                       onClick={handlePrevImage}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/80 border border-slate-700 hover:bg-purple-600 text-white transition shadow-lg cursor-pointer"
+                      className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-slate-900/80 border border-slate-700 hover:bg-purple-600 text-white transition shadow-lg cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
                       onClick={handleNextImage}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/80 border border-slate-700 hover:bg-purple-600 text-white transition shadow-lg cursor-pointer"
+                      className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-slate-900/80 border border-slate-700 hover:bg-purple-600 text-white transition shadow-lg cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </button>
@@ -222,12 +222,12 @@ export default function ProjectCard({ project, onExplain }) {
 
               {/* Modal Footer */}
               <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-                <span className="text-slate-400 font-mono text-[11px]">
+                <span className="text-slate-400 font-mono text-[11px] truncate max-w-[200px] sm:max-w-none">
                   {activeGalleryItem.caption}
                 </span>
                 <button
                   onClick={() => setGalleryIndex(null)}
-                  className="px-4 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition cursor-pointer min-h-[44px]"
                 >
                   Close
                 </button>

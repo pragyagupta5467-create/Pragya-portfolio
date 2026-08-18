@@ -1,9 +1,10 @@
-Pragya Gupta — Developer Portfolio
+# Pragya Portfolio
 
-Welcome to my personal developer portfolio! This repository contains the source code for my interactive web portfolio, built with **React 19**, **Vite 8**, and **Tailwind CSS v4**. It showcases my academic journey as an MCA student at IIIT Bhopal, software development projects, verified coding profile achievements, certifications, and leadership role as a GeeksforGeeks Campus Mantri.
+Welcome to **Pragya Portfolio**! This repository contains the source code for my interactive web portfolio, built with **React 19**, **Vite 8**, and **Tailwind CSS v4**. It showcases my academic journey as an MCA student at IIIT Bhopal, software development projects, verified coding profile achievements, certifications, and leadership role as a GeeksforGeeks Campus Mantri.
 
 ---
- 1. About
+
+## 1. About
 
 I am **Pragya Gupta**, a Master of Computer Applications (MCA) student at the **Indian Institute of Information Technology (IIIT), Bhopal** (2024–Present) and an active **GeeksforGeeks Campus Mantri 2026**.
 
@@ -13,7 +14,7 @@ My core technical expertise spans **Data Structures & Algorithms in Java**, **Sy
 
 ## 2. Features
 
--  **Persistent Dual Theme System**: Instant toggle between Dark Mode (futuristic slate aesthetic) and Light Mode (high-contrast, crisp white UI) with `localStorage` persistence.
+- 🌓 **Persistent Dual Theme System**: Instant toggle between Dark Mode (futuristic slate aesthetic) and Light Mode (high-contrast, crisp white UI) with `localStorage` persistence.
 - ✨ **Animated 2.5D Particle Constellation Background**: Subtle floating particle dots and drifting blurred gradient orbs rendered via HTML5 Canvas and CSS animations.
 - 💬 **Interactive Speech Avatar ("Hi 👋 I'm Pragya")**: Theme-aware speech avatar in the top navigation bar powered by the Web Speech API for voice introduction playback.
 - 🎨 **Shining Purple-Blue Gradient Heading**: Smooth 4-stop animated gradient text effect on the main hero greeting.

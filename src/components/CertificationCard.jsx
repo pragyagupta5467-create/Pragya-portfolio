@@ -62,7 +62,7 @@ export default function CertificationCard({ certificate, onView }) {
       <div className="pt-3 border-t border-slate-800/80 mt-2">
         <button
           onClick={() => onView(certificate)}
-          className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold transition cursor-pointer hover:border-purple-500/50"
+          className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold transition cursor-pointer hover:border-purple-500/50 min-h-[44px]"
         >
           <FileText className="w-3.5 h-3.5 text-purple-400" />
           <span>View Certificate</span>

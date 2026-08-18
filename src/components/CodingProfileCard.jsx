@@ -11,7 +11,7 @@ export default function CodingProfileCard({ config, stats }) {
   return (
     <motion.div
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-xl backdrop-blur-md transition-all hover:border-purple-500/40"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 shadow-xl backdrop-blur-md transition-all hover:border-purple-500/40"
     >
       <div>
         {/* Header Platform & Icon */}
@@ -51,7 +51,7 @@ export default function CodingProfileCard({ config, stats }) {
           href={profileUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-100 font-semibold text-xs transition hover:border-purple-500/50"
+          className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-100 font-semibold text-xs transition hover:border-purple-500/50 min-h-[44px]"
         >
           <span>View Profile</span>
           <ExternalLink className="w-3.5 h-3.5 text-purple-400" />

@@ -9,7 +9,7 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -22,35 +22,35 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-purple-500/30 bg-slate-900/95 p-6 shadow-2xl backdrop-blur-xl text-slate-100 z-10 max-h-[90vh] flex flex-col justify-between"
+          className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-purple-500/30 bg-slate-900/95 p-4 sm:p-6 shadow-2xl backdrop-blur-xl text-slate-100 z-10 max-h-[90vh] flex flex-col justify-between"
         >
           {/* Modal Header */}
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 sm:pb-4 mb-3 sm:mb-4">
             <div className="flex items-center gap-2.5">
               <div className="p-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400">
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white leading-tight">{certificate.title}</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white leading-tight">{certificate.title}</h3>
                 <p className="text-xs text-slate-400 font-medium">{certificate.issuer}</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Full Certificate Image Lightbox */}
-          <div className="relative mb-4 overflow-hidden rounded-xl border border-slate-800 bg-slate-950/90 p-4 text-center flex-1 flex items-center justify-center min-h-[300px]">
+          <div className="relative mb-4 overflow-hidden rounded-xl border border-slate-800 bg-slate-950/90 p-2 sm:p-4 text-center flex-1 flex items-center justify-center min-h-[260px] sm:min-h-[300px]">
             {certificate.image && !imageError ? (
               <img
                 src={certificate.image}
                 alt={certificate.title}
                 onError={() => setImageError(true)}
-                className="max-h-[60vh] w-full object-contain mx-auto rounded-lg shadow-md"
+                className="max-h-[60vh] max-w-full w-auto h-auto object-contain mx-auto rounded-lg shadow-md"
               />
             ) : (
               <div className="py-12 flex flex-col items-center justify-center gap-3">
@@ -87,7 +87,7 @@ export default function CertificateModal({ certificate, isOpen, onClose }) {
 
             <button
               onClick={onClose}
-              className="px-5 py-2 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition cursor-pointer"
+              className="px-5 py-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition cursor-pointer min-h-[44px]"
             >
               Close
             </button>
